@@ -10,26 +10,26 @@ public class Triangle {
         Point c = new Point(x3, y3);
     }
 
-    public double getPerimeter(Triangle given) {
+    public double getPerimeter() {
         double perimeter = 0;
-        double side1 = given.v1.distanceTo(given.v2);
-        double side2 = given.v2.distanceTo(given.v3);
-        double side3 = given.v3.distanceTo(given.v1);
+        double side1 = v1.distanceTo(v2);
+        double side2 = v2.distanceTo(v3);
+        double side3 = v3.distanceTo(v1);
         perimeter = side1 + side2 + side3;
         return perimeter;
     }
-    public double getArea(Triangle given) {
-        double s = given.getPerimeter(given) / 2;
-        double side1 = given.v1.distanceTo(given.v2);
-        double side2 = given.v2.distanceTo(given.v3);
-        double side3 = given.v3.distanceTo(given.v1);
+    public double getArea() {
+        double s = getPerimeter() / 2;
+        double side1 = v1.distanceTo(v2);
+        double side2 = v2.distanceTo(v3);
+        double side3 = v3.distanceTo(v1);
         double area = Math.sqrt((s * (s - side1) * (s - side2) * (s - side3)));
         return area;
     }
-    public String classify(Triangle given) {
-        double side1 = given.v1.distanceTo(given.v2);
-        double side2 = given.v2.distanceTo(given.v3);
-        double side3 = given.v3.distanceTo(given.v1);
+    public String classify() {
+        double side1 = v1.distanceTo(v2);
+        double side2 = v2.distanceTo(v3);
+        double side3 = v3.distanceTo(v1);
         if (side1 == side2 && side1 == side3) {
             return "equilateral";
         } else {
@@ -37,6 +37,22 @@ public class Triangle {
                 return "isosceles";
             } else {
                 return "scalene";
+            }
+        }
+    }
+    public String toString(Triangle given) {
+        String answer = "";
+        answer = "" + "v1(" + given.v1.getX() + ", " + given.v1.getY() + ") v2(" + given.v2.getX() + ", " + given.v2.getY() + ") v2(" + given.v3.getX() + ", " + given.v3.getY() + ")";
+        return answer;
+    }
+    public void setVertex(int index, Point newP) {
+        if (index == 0) {
+            v1 = newP;
+        } else {
+            if (index == 1) {
+                v2 = newP;
+            } else {
+                v3 = newP;
             }
         }
     }
